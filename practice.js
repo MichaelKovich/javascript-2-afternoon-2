@@ -104,9 +104,18 @@ var numbersArray = [1,2,34,54,55,34,32,11,19,17,54,66,13];
   Have divider return an Array with the first item in the array being the evens array (all the even values from numbersArray) and the second item in the Array being the odds array (all the odd values from numbersArray).
 */
 
-//Code Here
-
-
+let divider = (numbersArray) => {
+  let evensArray = [];
+  let oddsArray = [];
+  numbersArray.forEach(function (element) {
+    if (element % 2 === 0) {
+      evensArray.push(element);
+    } else {
+      oddsArray.push(element);
+    }
+  })
+  return [evensArray, oddsArray];
+};
 
 ////////// PROBLEM 7 //////////
 
@@ -125,9 +134,16 @@ var getRandomArbitrary = function() {
   If it is, return true, if it's not, return false
 */
 
-//Code Here
-
-
+let finder = (arr) => {
+  let num = getRandomArbitrary();
+  let present = false;
+  arr.forEach(function (element) {
+    if (element === num) {
+      present = true;
+    }
+  })
+  return present;
+};
 
 ////////// PROBLEM 8 //////////
 
@@ -152,9 +168,19 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
   addItem(myGroceryList, 'Jerky') --> ['pizza', 'hotpockets', 'MtnDew', 'corndogs', 'Jerky'];
 */
 
-//Code Here
+let removeItem = (myGroceryList, item) => {
+  myGroceryList.forEach(function (element, index) {
+    if (element === item) {
+      myGroceryList.splice(index, 1);
+    }
+  })
+  return myGroceryList;
+};
 
-
+let addItem = (myGroceryList, item) => {
+  myGroceryList.push(item);
+  return myGroceryList;
+};
 
 ////////// PROBLEM 9 //////////
 
@@ -162,9 +188,13 @@ var myGroceryList = ['chips', 'pizza', 'hotpockets', 'MtnDew', 'corndogs'];
   Write a function called maker that creates an array, fills that array with numbers from 1 to 215, then returns the array.
 */
 
-//Code Here
-
-
+let maker = () => {
+  let arr = [];
+  for (var i = 1; i <= 215; i++) {
+    arr.push(i);
+  }
+  return arr;
+};
 
 ////////// PROBLEM 10 //////////
 
@@ -178,9 +208,12 @@ var numbers = [5, '9', 16, 19, '25', '34', 48];
   *Verify your answer is correct. --> [15, 19, 26, 29, 35, 44, 58]
 */
   
-//Code Here
-
-
+let addTen = (numbers) => {
+  numbers.forEach(function (element, index, array) {
+    numbers[index] = parseInt(numbers[index]) + 10;
+  })
+  return numbers;
+};
 
 ////////// PROBLEM 11 //////////
 
@@ -203,9 +236,13 @@ for(var i = 0; i < num2; i++){
   Return the array which is longest.
 */
 
-//Code Here
-
-
+let longer = (arr1, arr2) => {
+  if (arr1.length > arr2.length) {
+    return arr1;
+  } else {
+    return arr2;
+  }
+};
 
 /*
   As a continuation of the previous problem, write another function called 'both'.
@@ -215,9 +252,15 @@ for(var i = 0; i < num2; i++){
   Example: var arr1 = [1,2,3,4]; var arr2 = [2,4,5,6]; newArray // [2,4]
 */
 
-//Code Here
-
-
+let both = (arr1, arr2) => {
+  let matching = [];
+  arr1.forEach(function (element) {
+    if (arr2.includes(element)) {
+      matching.push(element);
+    }
+  })
+  return matching;
+};
 
 ////////// PROBLEM 12 //////////
 
@@ -255,30 +298,27 @@ var colt = {
   After that console.log the length of the Array and make sure that it's equal to 4. 
 */
 
-//Code Here
-
-
+devMountainEmployees.push(tyler, cahlan, ryan, colt)
 
 /*
   Now let's say Cahlan has a mental breakdown and has to take a leave of absence to 'find himself'.
   Loop through your devMountainEmployees until you find cahlan, then remove him from the array.
 */
 
-//Code Here
-
-
+devMountainEmployees.forEach(function (element, index) {
+  if (element.name === 'Cahlan') {
+    devMountainEmployees.splice(index, 1);
+  }
+})
 
 ////////// PROBLEM 13 //////////
-
 
 /*
   A very clean way to pass around large LISTS (arrays) of COLLECTIONS (objects) of Data is to have an Array full of objects. 
   Create an empty array called users.
 */
 
-//Code Here
-
-
+let users = [];
 
 /*
   Now add three user objects to your users array. Each user object should contain the following properties. name, email, password, username.
@@ -295,9 +335,13 @@ var user1 = {
 };
 // Do not edit the code above.
 
-//Code Here
-
-
+users.push(user1, {name: 'Scuba Diver',
+email: 'scubagear@gmail.com',
+password: 'iLoveScubaDiving',
+username: 'scubadivingforlife'}, {name: 'Young Horse',
+email: 'colt@gmail.com',
+password: 'neighhhh',
+username: 'colt45'});
 
 /*
   Now you have a very common data structure. 
@@ -309,9 +353,11 @@ var user1 = {
   Once you find the particular index he's located in, delete him from the array.
 */
 
-//Code Here
-
-
+users.forEach(function (element, index) {
+  if (element.email === 'tylermcginnis33@gmail.com') {
+    users.splice(index, 1);
+  }
+})
 
 /*
   The activity we just did is very much how data works in 'the real world'.
